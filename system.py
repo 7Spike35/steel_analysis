@@ -48,7 +48,7 @@ class SteelDefectSystem(QMainWindow):
         # 如果要检测钢材，请将此处替换为你训练好的权重文件路径，例如 'runs/detect/train/weights/best.pt'
         # 现在为了演示，我们使用官方的 yolov8n.pt (它会自动下载)
         print("正在加载模型...")
-        self.model = YOLO('D:\pytorchusetrue\steel_analysis\\best.pt')
+        self.model = YOLO('.\\best.pt')
         print("模型加载完成!")
 
         self.cap = None
