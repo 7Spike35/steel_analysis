@@ -1,0 +1,8 @@
+PyQt5
+ultralytics
+opencv-python
+kagglehub
+PyYAML
+pytest
+pytest-qt
+

@@ -1,0 +1,11 @@
+path: D:\pytorchusetrue\steel_analysis\datasets\neu_det
+train: train/images
+val: valid/images
+nc: 6
+names:
+  0: crazing
+  1: inclusion
+  2: patches
+  3: pitted_surface
+  4: rolled-in_scale
+  5: scratches
