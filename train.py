@@ -33,6 +33,7 @@ def convert_xml_to_yolo(xml_file, output_txt, class_list):
     - 将左上角 / 右下角坐标转换为归一化中心坐标 (x, y, w, h)；
     - 按行写入到 TXT 文件中（格式：`cls x y w h`）。
     """
+
     tree = ET.parse(xml_file)
     root = tree.getroot()
     size = root.find('size')
@@ -109,6 +110,8 @@ def prepare_data():
     train_files = image_files[:split_index]
     val_files = image_files[split_index:]
 
+
+    #转换XML文件并保存
     def process_files(files, img_dest, lbl_dest):
         count = 0
         for img_path in files:
