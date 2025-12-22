@@ -189,7 +189,7 @@ class SteelDefectSystem(QMainWindow):
         main_layout.setRowStretch(2, 1)  # 底部表格占1份高度
 
     # ===========================
-    # 3. 逻辑处理核心功能
+    # 3. 逻辑处理核心功能1
     # ===========================
     def run_inference(self, frame, source_type="Image"):
         """
