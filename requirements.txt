@@ -2,7 +2,7 @@ PyQt5
 ultralytics
 opencv-python
 kagglehub
+numpy
 PyYAML
 pytest
 pytest-qt
-
