@@ -18,7 +18,6 @@ CLASSES = ['crazing', 'inclusion', 'patches', 'pitted_surface', 'rolled-in_scale
 
 
 # ===========================================
-
 def convert_xml_to_yolo(xml_file, output_txt, class_list):
     """
     将 VOC 格式的 XML 标注文件转换为 YOLO 所需的 TXT 标签格式。
@@ -72,36 +71,29 @@ def prepare_data():
     print(f"1. 正在从 Kaggle 下载 {DATASET_URL} ...")
     raw_path = kagglehub.dataset_download(DATASET_URL)
     print(f"   下载完成，路径: {raw_path}")
-
     # 定义目标路径
     images_train_dir = os.path.join(LOCAL_DIR, 'train', 'images')
     labels_train_dir = os.path.join(LOCAL_DIR, 'train', 'labels')
     images_val_dir = os.path.join(LOCAL_DIR, 'valid', 'images')
     labels_val_dir = os.path.join(LOCAL_DIR, 'valid', 'labels')
-
     # 如果目录已存在，建议清理掉重新生成（防止数据污染），或者手动删除
     if os.path.exists(LOCAL_DIR):
         print("   检测到本地数据集目录已存在，正在清理以确保数据最新...")
         shutil.rmtree(LOCAL_DIR)
-
     os.makedirs(images_train_dir, exist_ok=True)
     os.makedirs(labels_train_dir, exist_ok=True)
     os.makedirs(images_val_dir, exist_ok=True)
     os.makedirs(labels_val_dir, exist_ok=True)
-
     # 搜索下载下来的文件 (递归查找所有图片)
     # 原始数据集通常结构是 NEU-DET/IMAGES/*.bmp 或 *.jpg
     print("2. 正在搜索并转换数据格式 (XML -> YOLO)...")
-
     # 支持常见的图片格式
     image_files = []
     for ext in ['*.jpg', '*.bmp', '*.png']:
         image_files.extend(glob.glob(os.path.join(raw_path, '**', ext), recursive=True))
-
     # 去重
     image_files = list(set(image_files))
     print(f"   找到图片文件: {len(image_files)} 张")
-
     random.shuffle(image_files)
 
     # 划分训练集和验证集 (80% 训练, 20% 验证)
