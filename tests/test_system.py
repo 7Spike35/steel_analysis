@@ -9,7 +9,7 @@ from system import SteelDefectSystem
 
 class DummyBoxes:
     """
-    用于模拟 YOLO 返回结果中的 boxes.data 属性。
+    用于模拟 YOLO 返回结果中的 boxes.data 属性。111
     """
 
     def __init__(self, data: np.ndarray):
