@@ -63,7 +63,7 @@ class SteelDefectSystem(QMainWindow):
 
     def init_ui(self):
         """
-        初始化并搭建整个主界面布局。
+        初始化并搭建整个主界面布局。   1
 
         包含：
         - 左侧图像显示区域；
