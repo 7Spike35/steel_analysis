@@ -1,6 +1,6 @@
 ## 基于深度学习的钢材表面缺陷检测系统
 
-本项目基于 **PyQt5** 与 **Ultralytics YOLOv8**，实现了一个可视化的钢材表面缺陷检测系统，并配套提供了一键数据准备与模型训练脚本，以及较完整的单元测试与集成测试。
+本项目基于 **PyQt5** 与 **Ultralytics YOLOv8/v11**，实现了一个可视化的钢材表面缺陷检测系统，并配套提供了一键数据准备与模型训练脚本，以及较完整的单元测试与集成测试。
 
 ---
 
@@ -12,7 +12,7 @@
     - 导入单张图片；
     - 导入视频文件；
     - 调用本地摄像头实时检测。
-  - 集成 YOLOv8 模型，实时输出：
+  - 集成 YOLOv8/v11 模型，实时输出：
     - 推理耗时；
     - 检测到的目标数量；
     - 当前首个目标的类别、置信度与坐标信息；
@@ -21,7 +21,7 @@
 
 - **数据准备与模型训练（`train.py`）**
   - 使用 `kagglehub` 自动下载 NEU surface defect 数据集。
-  - 将 VOC XML 标注转换为 YOLOv8 所需的 TXT 标签格式。
+  - 将 VOC XML 标注转换为所需的 TXT 标签格式。
   - 自动划分训练集 / 验证集，并生成 `neu_det_auto.yaml` 配置文件。
   - 调用 Ultralytics YOLOv8 进行训练，并输出权重：
     - 训练结果默认存储于 `runs/detect/steel_defect_auto_run`；
@@ -46,7 +46,7 @@ pip install -r requirements.txt
 核心依赖说明：
 
 - `PyQt5`：图形界面框架；
-- `ultralytics`：YOLOv8 模型与训练框架；
+- `ultralytics`：YOLOv8/v11 模型与训练框架；
 - `opencv-python`：图像 / 视频读取与处理；
 - `kagglehub`：从 Kaggle 下载数据集；
 - `pytest`、`pytest-qt`：单元测试与 GUI 测试；
@@ -65,15 +65,15 @@ pip install -r requirements.txt
    在项目根目录执行：
 
    ```bash
-   python train.py
+   python train.py/train2.py(使用更大的模型与更多的训练轮次)
    ```
 
    脚本会自动完成：
 
    - 下载并解压数据集；
-   - 生成 YOLOv8 所需的数据目录结构 `datasets/neu_det`；
+   - 生成所需的数据目录结构 `datasets/neu_det`；
    - 生成 `neu_det_auto.yaml`；
-   - 调用 YOLOv8 开始训练，并在 `runs/detect/steel_defect_auto_run` 下保存结果和权重。
+   - 开始训练，并在 `runs/detect/steel_defect_auto_run` 下保存结果和权重。
 
 3. **获取训练好的权重**
 
